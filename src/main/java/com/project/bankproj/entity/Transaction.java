@@ -29,17 +29,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
-    @ManyToOne()
-    @JoinColumn(name = "debit_account_id",
-            referencedColumnName = "id")
-    private Account debitAccountId;
-
-    @ManyToOne()
-    @JoinColumn(name = "credit_account_id",
-            referencedColumnName = "id")
-    private Account creditAccountId;
-
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private int type;
 
@@ -51,4 +41,14 @@ public class Transaction {
 
     @Column(name = "created_at")
     private int createdAt;
+
+    @ManyToOne()
+    @JoinColumn(name = "debit_account_id",
+            referencedColumnName = "id")
+    private Account debitAccountId;
+
+    @ManyToOne()
+    @JoinColumn(name = "credit_account_id",
+            referencedColumnName = "id")
+    private Account creditAccountId;
 }

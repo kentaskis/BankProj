@@ -29,18 +29,8 @@ public class Agreement {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "account_id",
-            referencedColumnName = "id")
-    private Account account;
-
-    @ManyToOne()
-    @JoinColumn(name = "product_id",
-            referencedColumnName = "id")
-    private Product product;
-
     @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private AccountProductStatus status;
 
     @Column(name = "interest_rate")
@@ -51,4 +41,15 @@ public class Agreement {
 
     @Column(name = "updated_at")
     private int updatedAt;
+
+    @ManyToOne()
+    @JoinColumn(name = "account_id",
+            referencedColumnName = "id")
+    private Account account;
+
+    @ManyToOne()
+    @JoinColumn(name = "product_id",
+            referencedColumnName = "id")
+    private Product product;
+
 }

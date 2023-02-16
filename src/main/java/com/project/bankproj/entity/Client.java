@@ -35,17 +35,8 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
-//    @Column(name = "manager_id")
-    @ManyToOne()
-    @JoinColumn(name = "manager_id",
-            referencedColumnName = "id")
-    private Manager manager;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-    private Set<Account> accounts = new HashSet<>();
-
     @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private ClientStatus status;
 
     @Column(name = "tax_code")
@@ -71,4 +62,13 @@ public class Client {
 
     @Column(name = "updated_at")
     private int updatedAt;
+
+    @ManyToOne()
+    @JoinColumn(name = "manager_id",
+            referencedColumnName = "id")
+    private Manager manager;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+    private Set<Account> accounts = new HashSet<>();
+
 }

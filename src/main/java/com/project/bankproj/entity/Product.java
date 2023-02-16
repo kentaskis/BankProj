@@ -31,19 +31,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "managet_id",
-            referencedColumnName = "id")
-    private Manager manager;
-
     @Column(name = "name")
     private String name;
 
     @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private ProductStatus status;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "currency_code")
     private Currencies currency;
 
@@ -58,4 +53,9 @@ public class Product {
 
     @Column(name = "updated_at")
     private int updatedAt;
+
+    @ManyToOne()
+    @JoinColumn(name = "managet_id",
+            referencedColumnName = "id")
+    private Manager manager;
 }

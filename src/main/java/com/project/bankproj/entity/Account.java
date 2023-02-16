@@ -9,42 +9,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name="account")
+@Table(name = "account")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account {
     /**
-     `id` varchar(40) NOT NULL,
-     `client_id` INT NOT NULL,
-     `name` varchar(100) NOT NULL,
-     `type` INT(1) NOT NULL,
-     `status` INT(1) NOT NULL,
-     `balance` DECIMAL(15,2) NOT NULL,
-     `currency_code` INT(2) NOT NULL,
-     `created_at` TIMESTAMP NOT NULL,
-     `updated_at` TIMESTAMP NOT NULL,
+     * `id` varchar(40) NOT NULL,
+     * `client_id` INT NOT NULL,
+     * `name` varchar(100) NOT NULL,
+     * `type` INT(1) NOT NULL,
+     * `status` INT(1) NOT NULL,
+     * `balance` DECIMAL(15,2) NOT NULL,
+     * `currency_code` INT(2) NOT NULL,
+     * `created_at` TIMESTAMP NOT NULL,
+     * `updated_at` TIMESTAMP NOT NULL,
      */
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    @ManyToOne()
-    @JoinColumn(name = "client_id",
-            referencedColumnName = "id")
-    private Client client;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "debitAccountId")
-    private Set<Transaction> debitTransactions = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccountId")
-    private Set<Transaction> creditTransactions = new HashSet<>();
 
     @Column(name = "name")
     private String name;
@@ -53,7 +41,7 @@ public class Account {
     private AccountType type;
 
     @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private AccountStatus status;
 
     @Column(name = "balance")
@@ -68,4 +56,15 @@ public class Account {
 
     @Column(name = "updated_at")
     private int updatedAt;
+
+    @ManyToOne()
+    @JoinColumn(name = "client_id",
+            referencedColumnName = "id")
+    private Client client;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "debitAccountId")
+    private Set<Transaction> debitTransactions;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccountId")
+    private Set<Transaction> creditTransactions;
 }
