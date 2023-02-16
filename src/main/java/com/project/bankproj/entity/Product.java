@@ -28,25 +28,34 @@ public class Product {
      */
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "managet_id")
+    @ManyToOne()
+    @JoinColumn(name = "managet_id",
+            referencedColumnName = "id")
     private Manager manager;
 
     @Column(name = "name")
     private String name;
+
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)
     private ProductStatus status;
+
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "currency_code")
     private Currencies currency;
+
     @Column(name = "interest_rate")
     private int interestRate;
+
     @Column(name = "limit")
     private int limit;
+
     @Column(name = "created_at")
     private int createdAt;
+
     @Column(name = "updated_at")
     private int updatedAt;
 }

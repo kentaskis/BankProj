@@ -9,6 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -29,27 +32,40 @@ public class Account {
      */
     @Id
     @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-//    @Column(name = "client_id")
     @ManyToOne()
     @JoinColumn(name = "client_id",
             referencedColumnName = "id")
     private Client client;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "debitAccountId")
+    private Set<Transaction> debitTransactions = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccountId")
+    private Set<Transaction> creditTransactions = new HashSet<>();
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "type")
     private AccountType type;
+
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)
     private AccountStatus status;
+
     @Column(name = "balance")
     @Enumerated(EnumType.ORDINAL)
     private float balance;
+
     @Column(name = "currency_code")
     private Currencies currency;
+
     @Column(name = "created_at")
     private int createdAt;
+
     @Column(name = "updated_at")
     private int updatedAt;
 }

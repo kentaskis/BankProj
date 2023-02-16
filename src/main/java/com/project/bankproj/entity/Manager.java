@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
@@ -25,17 +24,22 @@ public class Manager {
      */
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)
     private ManagerStatus status;
+
     @Column(name = "created_at")
     public int createdAt;
+
     @Column(name = "updated_at")
     public int updatedAt;
 }

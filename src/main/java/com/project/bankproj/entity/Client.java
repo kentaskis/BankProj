@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,6 +32,7 @@ public class Client {
      */
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
 //    @Column(name = "manager_id")
@@ -37,8 +41,8 @@ public class Client {
             referencedColumnName = "id")
     private Manager manager;
 
-    @OneToMany
-    private Account accounts;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+    private Set<Account> accounts = new HashSet<>();
 
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)

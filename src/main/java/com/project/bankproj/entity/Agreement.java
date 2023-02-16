@@ -26,17 +26,23 @@ public class Agreement {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "account_id")
-    private String accountId;
+    @ManyToOne()
+    @JoinColumn(name = "account_id",
+            referencedColumnName = "id")
+    private Account account;
 
-    @Column(name = "product_id")
+    @ManyToOne()
+    @JoinColumn(name = "product_id",
+            referencedColumnName = "id")
     private Product product;
 
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)
     private AccountProductStatus status;
+
     @Column(name = "interest_rate")
     private float interestRate;
 

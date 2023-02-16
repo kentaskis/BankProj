@@ -26,12 +26,17 @@ public class Transaction {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
-    @Column(name = "debit_account_id")
+    @ManyToOne()
+    @JoinColumn(name = "debit_account_id",
+            referencedColumnName = "id")
     private Account debitAccountId;
 
-    @Column(name = "credit_account_id")
+    @ManyToOne()
+    @JoinColumn(name = "credit_account_id",
+            referencedColumnName = "id")
     private Account creditAccountId;
 
     @Enumerated(EnumType.ORDINAL)
