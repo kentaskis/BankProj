@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
+
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -26,7 +29,9 @@ public class Transaction {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
     private String id;
 
     @Enumerated(EnumType.STRING)
@@ -51,4 +56,30 @@ public class Transaction {
     @JoinColumn(name = "credit_account_id",
             referencedColumnName = "id")
     private Account creditAccountId;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return createdAt == that.createdAt && Objects.equals(debitAccountId, that.debitAccountId) && Objects.equals(creditAccountId, that.creditAccountId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(createdAt, debitAccountId, creditAccountId);
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id='" + id + '\'' +
+                ", type=" + type +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", createdAt=" + createdAt +
+                ", debitAccountId=" + debitAccountId +
+                ", creditAccountId=" + creditAccountId +
+                '}';
+    }
 }

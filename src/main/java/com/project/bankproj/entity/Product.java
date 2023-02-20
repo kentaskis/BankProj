@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -58,4 +60,32 @@ public class Product {
     @JoinColumn(name = "managet_id",
             referencedColumnName = "id")
     private Manager manager;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return createdAt == product.createdAt && Objects.equals(name, product.name) && currency == product.currency;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, currency, createdAt);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                ", currency=" + currency +
+                ", interestRate=" + interestRate +
+                ", limit=" + limit +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", manager=" + manager +
+                '}';
+    }
 }

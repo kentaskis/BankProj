@@ -8,7 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -31,8 +33,11 @@ public class Account {
      */
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
+
+    private String id;
 
     @Column(name = "name")
     private String name;
@@ -67,4 +72,34 @@ public class Account {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccountId")
     private Set<Transaction> creditTransactions;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(id, account.id) && currency == account.currency && Objects.equals(client, account.client);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, currency, client);
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", status=" + status +
+                ", balance=" + balance +
+                ", currency=" + currency +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", client=" + client +
+                ", debitTransactions=" + debitTransactions +
+                ", creditTransactions=" + creditTransactions +
+                '}';
+    }
 }
