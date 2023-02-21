@@ -1,0 +1,47 @@
+spring:
+  main:
+    banner-mode: off
+
+  datasource:
+    url: ${datasource.url}
+    username: ${datasource.username}
+    password: ${datasource.password}
+#    driver-class-name: driver-class-name=com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: DEBUG
+
+app:
+#  description: ${description}
+#  version: ${version}
+  server:
+    url: ${app.server.url}
+
+
+#  spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+#  spring.jpa.show-sql=true
+#  spring.jpa.properties.hibernate.format_sql=true
+#  spring.jpa.hibernate.ddl-auto=validate
+
+#  logging.level.root=INFO
+#  logging.level.org.springframework.security=DEBUG
+# cors:
+#  allowed-origins: ${cors.allowed-origins}

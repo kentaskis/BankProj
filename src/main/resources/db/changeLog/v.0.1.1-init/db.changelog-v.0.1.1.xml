@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+
+
+    <include file="10-changeset-manager-table-create.xml" relativeToChangelogFile="true"/>
+    <include file="20-changeset-client-table-create.xml" relativeToChangelogFile="true"/>
+    <include file="30-changeset-account-table-create.xml" relativeToChangelogFile="true"/>
+    <include file="40-changeset-product-table-create.xml" relativeToChangelogFile="true"/>
+    <include file="50-changeset-agreement-table-create.xml" relativeToChangelogFile="true"/>
+    <include file="60-changeset-transaction-table-create.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>
