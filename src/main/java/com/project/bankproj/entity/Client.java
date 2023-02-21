@@ -11,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -38,7 +39,7 @@ public class Client {
     @GenericGenerator(name = "UUID",
             strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
 
-    private String id;
+    private UUID id;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

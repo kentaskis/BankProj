@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Setter
 @Getter
@@ -32,7 +33,7 @@ public class Transaction {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID",
             strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
-    private String id;
+    private UUID id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type")

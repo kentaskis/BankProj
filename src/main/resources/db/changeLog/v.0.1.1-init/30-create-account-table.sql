@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `account`
 (
     `id`            varchar(40)    NOT NULL,
-    `client_id`     int            NOT NULL,
+    `client_id`     varchar(40)    NOT NULL,
     `name`          varchar(100)   NOT NULL,
     `type`          int            NOT NULL,
     `status`        int            NOT NULL,

@@ -12,6 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -37,7 +38,7 @@ public class Account {
     @GenericGenerator(name = "UUID",
             strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
 
-    private String id;
+    private UUID id;
 
     @Column(name = "name")
     private String name;
