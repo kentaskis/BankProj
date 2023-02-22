@@ -6,7 +6,7 @@ public enum TransactionType {
     APPROVED(8);
     private final int value;
 
-    private TransactionType(int value) {
+    TransactionType(int value) {
         this.value = value;
     }
 
