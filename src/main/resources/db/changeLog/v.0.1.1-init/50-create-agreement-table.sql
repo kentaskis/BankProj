@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `agreement`
 (
     `id`            int            NOT NULL AUTO_INCREMENT,
-    `account_id`    varchar(40)    NOT NULL,
+    `account_id`    binary(16)    NOT NULL,
     `product_id`    int            NOT NULL,
     `interest_rate` decimal(6, 4)  NOT NULL,
     `status`        int            NOT NULL,

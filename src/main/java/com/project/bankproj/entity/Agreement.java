@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Getter
@@ -28,21 +30,21 @@ public class Agreement {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private AccountProductStatus status;
 
     @Column(name = "interest_rate")
-    private float interestRate;
+    private BigDecimal interestRate;
 
     @Column(name = "created_at")
-    private int createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "updated_at")
-    private int updatedAt;
+    private Timestamp updatedAt;
 
     @ManyToOne()
     @JoinColumn(name = "account_id",

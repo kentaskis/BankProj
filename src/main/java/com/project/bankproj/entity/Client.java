@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -42,7 +43,7 @@ public class Client {
     private UUID id;
 
     @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private ClientStatus status;
 
     @Column(name = "tax_code")
@@ -64,10 +65,10 @@ public class Client {
     private String phone;
 
     @Column(name = "created_at")
-    private int createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "updated_at")
-    private int updatedAt;
+    private Timestamp updatedAt;
 
     @ManyToOne()
     @JoinColumn(name = "manager_id",

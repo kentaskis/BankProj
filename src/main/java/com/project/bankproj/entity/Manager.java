@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Getter
@@ -26,7 +27,7 @@ public class Manager {
      */
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "first_name")
@@ -36,14 +37,14 @@ public class Manager {
     private String lastName;
 
     @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private ManagerStatus status;
 
     @Column(name = "created_at")
-    public int createdAt;
+    public Timestamp createdAt;
 
     @Column(name = "updated_at")
-    public int updatedAt;
+    public Timestamp updatedAt;
 
     @Override
     public boolean equals(Object o) {

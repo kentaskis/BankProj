@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `client`
 (
-    `id`         varchar(40) NOT NULL,
+    `id`         binary(16)  NOT NULL,
     `manager_id` int         NOT NULL,
     `status`     int         NOT NULL,
     `tax_code`   varchar(20) NOT NULL,

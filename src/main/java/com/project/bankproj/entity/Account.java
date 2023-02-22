@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -47,21 +49,20 @@ public class Account {
     private AccountType type;
 
     @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private AccountStatus status;
 
     @Column(name = "balance")
-    @Enumerated(EnumType.ORDINAL)
-    private float balance;
+    private BigDecimal balance;
 
     @Column(name = "currency_code")
     private Currencies currency;
 
     @Column(name = "created_at")
-    private int createdAt;
+    private Timestamp createdAt;
 
     @Column(name = "updated_at")
-    private int updatedAt;
+    private Timestamp updatedAt;
 
     @ManyToOne()
     @JoinColumn(name = "client_id",
