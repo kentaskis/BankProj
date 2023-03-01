@@ -1,6 +1,6 @@
 package com.project.bankproj.entity;
 
-import com.project.bankproj.entity.enums.Currencies;
+import com.project.bankproj.entity.enums.CurrencyType;
 import com.project.bankproj.entity.enums.ProductStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,10 +21,10 @@ import java.util.Objects;
 public class Product {
     /**
      * 	id INT NOT NULL ID_SEQ.NEXTVAL,
-     * 	managet_id INT NOT NULL,
+     * 	manager_id INT NOT NULL,
      * 	name varchar(70) NOT NULL,
      * 	status INT(1) NOT NULL,
-     * 	curency_code INT(2) NOT NULL,
+     * 	currency_code INT(2) NOT NULL,
      * 	interest_rate INT(1) NOT NULL,
      * 	limit INT NOT NULL,
      * 	created_at TIMESTAMP NOT NULL,
@@ -44,7 +44,7 @@ public class Product {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "currency_code")
-    private Currencies currency;
+    private CurrencyType currency;
 
     @Column(name = "interest_rate")
     private BigDecimal interestRate;

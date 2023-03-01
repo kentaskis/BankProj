@@ -1,14 +1,14 @@
 package com.project.bankproj.entity.enums;
 
-public enum Currencies {
+public enum CurrencyType {
     EUR(1),
     USD(2),
     UAH(3),
     RUB(4);
 
-    private int value;
+    private final int value;
 
-    private Currencies(int value) {
+    CurrencyType(int value) {
         this.value = value;
     }
 

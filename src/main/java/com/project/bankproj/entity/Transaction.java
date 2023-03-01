@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -33,9 +32,11 @@ public class Transaction {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID",
-            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
+//    @GeneratedValue(generator = "UUID")
+//    @GenericGenerator(name = "UUID",
+//            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
+
     private UUID id;
 
     @Enumerated(EnumType.ORDINAL)

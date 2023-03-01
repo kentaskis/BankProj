@@ -8,6 +8,7 @@
 
 
 
+    <include file="5-changeset-siq-create.xml" relativeToChangelogFile="true"/>
     <include file="10-changeset-manager-table-create.xml" relativeToChangelogFile="true"/>
     <include file="20-changeset-client-table-create.xml" relativeToChangelogFile="true"/>
     <include file="30-changeset-account-table-create.xml" relativeToChangelogFile="true"/>
