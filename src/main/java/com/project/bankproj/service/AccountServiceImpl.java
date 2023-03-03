@@ -2,7 +2,6 @@ package com.project.bankproj.service;
 
 import com.project.bankproj.dto.AccountDto;
 import com.project.bankproj.dto.CreateAccountDto;
-import com.project.bankproj.dto.UpdateAccountDto;
 import com.project.bankproj.entity.Account;
 import com.project.bankproj.entity.Client;
 import com.project.bankproj.exeption.AccountNotFoundException;
@@ -19,7 +18,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class AccountService implements com.project.bankproj.service.interfaces.AccountService {
+public class AccountServiceImpl implements com.project.bankproj.service.interfaces.AccountServiceImpl {
     private final AccountRepository repository;
     private final ClientRepository clientRepository;
     private final AccountMapper mapper;
@@ -47,15 +46,5 @@ public class AccountService implements com.project.bankproj.service.interfaces.A
         Account account = accountMapper.toDtoModel(newAccountDto);
         account.setClient(client);
         repository.save(account);
-    }
-
-    @Override
-    public void update(String uuid, UpdateAccountDto accountDto) {
-        //TODO
-    }
-
-    @Override
-    public void delete(String uuid) {
-        //TODO
     }
 }

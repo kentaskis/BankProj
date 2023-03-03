@@ -4,9 +4,9 @@ public enum ProductStatus {
     ACTIVE(1),
     PENDING(2),
     REMOVED(3);
-    private int value;
+    private final int value;
 
-    private ProductStatus(int value) {
+    ProductStatus(int value) {
         this.value = value;
     }
 

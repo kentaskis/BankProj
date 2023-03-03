@@ -33,8 +33,6 @@ public class Account {
      * `created_at` TIMESTAMP NOT NULL,
      * `updated_at` TIMESTAMP NOT NULL,
      */
-//    @GenericGenerator(name = "UUID",
-//            strategy = GenerationType.UUID)  //"com.project.bankproj.generator.UuidTimeSequenceGenerator")
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
@@ -70,9 +68,6 @@ public class Account {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "debitAccountId")
     private Set<Transaction> debitTransactions;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccountId")
-//    private Set<Transaction> creditTransactions;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,14 +87,13 @@ public class Account {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", type=" + type +
-//                ", status=" + status +
+                ", status=" + status +
                 ", balance=" + balance +
                 ", currency=" + currency +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
-//                ", client=" + client +
-//                ", debitTransactions=" + debitTransactions +
-//                ", creditTransactions=" + creditTransactions +
+                ", client=" + client +
+                ", debitTransactions=" + debitTransactions +
                 '}';
     }
 }

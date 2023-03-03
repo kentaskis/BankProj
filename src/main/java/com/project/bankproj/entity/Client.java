@@ -35,11 +35,7 @@ public class Client {
      */
     @Id
     @Column(name = "id")
-//    @GeneratedValue(generator = "UUID")
-//    @GenericGenerator(name = "UUID",
-//            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
     @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
-
     private UUID id;
 
     @Column(name = "status")
