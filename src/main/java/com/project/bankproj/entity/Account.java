@@ -2,13 +2,12 @@ package com.project.bankproj.entity;
 
 import com.project.bankproj.entity.enums.AccountStatus;
 import com.project.bankproj.entity.enums.AccountType;
-import com.project.bankproj.entity.enums.Currencies;
+import com.project.bankproj.entity.enums.CurrencyType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -34,12 +33,11 @@ public class Account {
      * `created_at` TIMESTAMP NOT NULL,
      * `updated_at` TIMESTAMP NOT NULL,
      */
+//    @GenericGenerator(name = "UUID",
+//            strategy = GenerationType.UUID)  //"com.project.bankproj.generator.UuidTimeSequenceGenerator")
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID",
-            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
-
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "name")
@@ -56,7 +54,10 @@ public class Account {
     private BigDecimal balance;
 
     @Column(name = "currency_code")
-    private Currencies currency;
+    private CurrencyType currency;
+
+    @Column(name = "client_id")
+    private UUID clientId;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
@@ -72,8 +73,8 @@ public class Account {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "debitAccountId")
     private Set<Transaction> debitTransactions;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccountId")
-    private Set<Transaction> creditTransactions;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccountId")
+//    private Set<Transaction> creditTransactions;
 
     @Override
     public boolean equals(Object o) {
@@ -94,14 +95,14 @@ public class Account {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", type=" + type +
-                ", status=" + status +
+//                ", status=" + status +
                 ", balance=" + balance +
                 ", currency=" + currency +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
-                ", client=" + client +
-                ", debitTransactions=" + debitTransactions +
-                ", creditTransactions=" + creditTransactions +
+//                ", client=" + client +
+//                ", debitTransactions=" + debitTransactions +
+//                ", creditTransactions=" + creditTransactions +
                 '}';
     }
 }
