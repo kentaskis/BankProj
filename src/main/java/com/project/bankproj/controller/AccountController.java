@@ -17,11 +17,6 @@ public class AccountController {
 
     private final AccountService service;
 
-//    @Autowired
-//    public AccountController(AccountServiceIf service) {
-//        this.service = service;
-//    }
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<AccountDto> listAccounts() {

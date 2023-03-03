@@ -56,9 +56,6 @@ public class Account {
     @Column(name = "currency_code")
     private CurrencyType currency;
 
-    @Column(name = "client_id")
-    private UUID clientId;
-
     @Column(name = "created_at")
     private Timestamp createdAt;
 

@@ -9,7 +9,6 @@ import com.project.bankproj.exeption.AccountNotFoundException;
 import com.project.bankproj.exeption.ClientNotFoundException;
 import com.project.bankproj.mapper.AccountMapper;
 import com.project.bankproj.mapper.CreateAccountMapper;
-import com.project.bankproj.mapper.UUIDMapper;
 import com.project.bankproj.repository.AccountRepository;
 import com.project.bankproj.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,14 +24,6 @@ public class AccountService implements com.project.bankproj.service.interfaces.A
     private final ClientRepository clientRepository;
     private final AccountMapper mapper;
     private final CreateAccountMapper accountMapper;
-    private final UUIDMapper uuidMapper;
-
-//    @Autowired
-//    public AccountService(AccountRepository repository, AccountMapper mapper, UUIDMapper uuidMapper) {
-//        this.repository = repository;
-//        this.mapper = mapper;
-//        this.uuidMapper = uuidMapper;
-//    }
 
     @Override
     public List<AccountDto> getList() {
@@ -51,7 +42,7 @@ public class AccountService implements com.project.bankproj.service.interfaces.A
     @Override
     public void create(CreateAccountDto newAccountDto) {
         Client client = clientRepository
-                .findById(uuidMapper.fromString(newAccountDto.getClientId()))
+                .findById(UUID.fromString(newAccountDto.getClientId()))
                 .orElseThrow(() -> new ClientNotFoundException("Client id is not found"));
         Account account = accountMapper.toDtoModel(newAccountDto);
         account.setClient(client);
@@ -60,11 +51,11 @@ public class AccountService implements com.project.bankproj.service.interfaces.A
 
     @Override
     public void update(String uuid, UpdateAccountDto accountDto) {
-
+        //TODO
     }
 
     @Override
     public void delete(String uuid) {
-
+        //TODO
     }
 }
