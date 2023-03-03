@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -36,9 +35,10 @@ public class Client {
      */
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID",
-            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
+//    @GeneratedValue(generator = "UUID")
+//    @GenericGenerator(name = "UUID",
+//            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
 
     private UUID id;
 
