@@ -22,17 +22,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account {
-    /**
-     * `id` varchar(40) NOT NULL,
-     * `client_id` INT NOT NULL,
-     * `name` varchar(100) NOT NULL,
-     * `type` INT(1) NOT NULL,
-     * `status` INT(1) NOT NULL,
-     * `balance` DECIMAL(15,2) NOT NULL,
-     * `currency_code` INT(2) NOT NULL,
-     * `created_at` TIMESTAMP NOT NULL,
-     * `updated_at` TIMESTAMP NOT NULL,
-     */
+
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
