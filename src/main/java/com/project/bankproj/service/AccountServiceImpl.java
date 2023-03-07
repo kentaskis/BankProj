@@ -1,15 +1,9 @@
 package com.project.bankproj.service;
 
 import com.project.bankproj.dto.AccountDto;
-import com.project.bankproj.dto.CreateAccountDto;
-import com.project.bankproj.entity.Account;
-import com.project.bankproj.entity.Client;
 import com.project.bankproj.exeption.AccountNotFoundException;
-import com.project.bankproj.exeption.ClientNotFoundException;
 import com.project.bankproj.mapper.AccountMapper;
-import com.project.bankproj.mapper.CreateAccountMapper;
 import com.project.bankproj.repository.AccountRepository;
-import com.project.bankproj.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class AccountServiceImpl implements com.project.bankproj.service.interfaces.AccountServiceImpl {
     private final AccountRepository repository;
-    private final ClientRepository clientRepository;
     private final AccountMapper mapper;
-    private final CreateAccountMapper accountMapper;
 
     @Override
     public List<AccountDto> getList() {
@@ -36,15 +28,5 @@ public class AccountServiceImpl implements com.project.bankproj.service.interfac
                         .findById(
                                 UUID.fromString(uuid))
                         .orElseThrow(() -> new AccountNotFoundException("Account id is not found")));
-    }
-
-    @Override
-    public void create(CreateAccountDto newAccountDto) {
-        Client client = clientRepository
-                .findById(UUID.fromString(newAccountDto.getClientId()))
-                .orElseThrow(() -> new ClientNotFoundException("Client id is not found"));
-        Account account = accountMapper.toDtoModel(newAccountDto);
-        account.setClient(client);
-        repository.save(account);
     }
 }
