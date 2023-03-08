@@ -6,7 +6,6 @@ spring:
     url: ${datasource.url}
     username: ${datasource.username}
     password: ${datasource.password}
-#    driver-class-name: driver-class-name=com.mysql.cj.jdbc.Driver
 
   jpa:
     properties:
@@ -28,20 +27,5 @@ logging:
         security: DEBUG
 
 app:
-#  description: ${description}
-#  version: ${version}
   server:
     url: ${app.server.url}
-
-
-#  spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-#  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
-
-#  spring.jpa.show-sql=true
-#  spring.jpa.properties.hibernate.format_sql=true
-#  spring.jpa.hibernate.ddl-auto=validate
-
-#  logging.level.root=INFO
-#  logging.level.org.springframework.security=DEBUG
-# cors:
-#  allowed-origins: ${cors.allowed-origins}

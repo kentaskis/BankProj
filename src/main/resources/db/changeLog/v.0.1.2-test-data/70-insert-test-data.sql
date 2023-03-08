@@ -44,7 +44,7 @@ VALUES (unhex(replace('b8ed7c33-b1cd-11ed-8545-08979887bb18', '-', '')),
        (unhex(replace('72c98cd3-b1d5-11ed-8545-08979887bb18', '-', '')),
         unhex(replace('a04b2b18-b1d3-11ed-8545-08979887bb18', '-', '')), 'Second card', 2, 1, 700.00, 2),
        (unhex(replace('72c98cd7-b1d5-11ed-8545-08979887bb18', '-', '')),
-        unhex(replace('ae6c8264-b1d4-11ed-8545-08979887bb18', '-', '')), 'My first', 2, 1, 800.00, 4),
+        unhex(replace('ae6c8264-b1d4-11ed-8545-08979887bb18', '-', '')), 'My first', 2, 1, 800.00, 2),
        (unhex(replace('72c98cdb-b1d5-11ed-8545-08979887bb18', '-', '')),
         unhex(replace('ae6c8264-b1d4-11ed-8545-08979887bb18', '-', '')), 'New', 2, 1, 900.00, 3);
 

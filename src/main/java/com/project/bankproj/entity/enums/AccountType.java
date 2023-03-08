@@ -4,9 +4,9 @@ public enum AccountType {
     CREDIT(1),
     DEPOSIT(2),
     CURRENT(3);
-    private int value;
+    private final int value;
 
-    private AccountType(int value) {
+    AccountType(int value) {
         this.value = value;
     }
 
