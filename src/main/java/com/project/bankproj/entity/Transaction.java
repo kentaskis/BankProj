@@ -19,22 +19,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Transaction {
-    /**
-     *	id varchar(40) NOT NULL,
-     * 	debit_account_id varchar(40) NOT NULL,
-     * 	credit_account_id varchar(40) NOT NULL,
-     * 	type INT(1) NOT NULL,
-     * 	amount DECIMAL(12.4) NOT NULL,
-     * 	fee DECIMAL(12.4) NOT NULL,
-     * 	description varchar(255) NOT NULL,
-     * 	created_at TIMESTAMP NOT NULL,
-     */
 
     @Id
     @Column(name = "id")
-//    @GeneratedValue(generator = "UUID")
-//    @GenericGenerator(name = "UUID",
-//            strategy = "com.project.bankproj.generator.UuidTimeSequenceGenerator")
     @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
 
     private UUID id;

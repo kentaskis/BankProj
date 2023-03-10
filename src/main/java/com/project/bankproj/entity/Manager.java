@@ -17,14 +17,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "manager")
 public class Manager {
-    /**
-     * id INT NOT NULL ID_SEQ.NEXTVAL,
-     * 	first_name varchar(50) NOT NULL,
-     * 	last_name varchar(50) NOT NULL,
-     * 	status INT(1) NOT NULL,
-     * 	created_at TIMESTAMP NOT NULL,
-     * 	updated_at TIMESTAMP NOT NULL,
-     */
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

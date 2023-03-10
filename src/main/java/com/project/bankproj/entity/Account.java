@@ -22,19 +22,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account {
-    /**
-     * `id` varchar(40) NOT NULL,
-     * `client_id` INT NOT NULL,
-     * `name` varchar(100) NOT NULL,
-     * `type` INT(1) NOT NULL,
-     * `status` INT(1) NOT NULL,
-     * `balance` DECIMAL(15,2) NOT NULL,
-     * `currency_code` INT(2) NOT NULL,
-     * `created_at` TIMESTAMP NOT NULL,
-     * `updated_at` TIMESTAMP NOT NULL,
-     */
-//    @GenericGenerator(name = "UUID",
-//            strategy = GenerationType.UUID)  //"com.project.bankproj.generator.UuidTimeSequenceGenerator")
+
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
@@ -70,9 +58,6 @@ public class Account {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "debitAccountId")
     private Set<Transaction> debitTransactions;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccountId")
-//    private Set<Transaction> creditTransactions;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,14 +77,13 @@ public class Account {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", type=" + type +
-//                ", status=" + status +
+                ", status=" + status +
                 ", balance=" + balance +
                 ", currency=" + currency +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
-//                ", client=" + client +
-//                ", debitTransactions=" + debitTransactions +
-//                ", creditTransactions=" + creditTransactions +
+                ", client=" + client +
+                ", debitTransactions=" + debitTransactions +
                 '}';
     }
 }

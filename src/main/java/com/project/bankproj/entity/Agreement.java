@@ -18,15 +18,6 @@ import java.util.Objects;
 @Entity
 @Table(name="agreement")
 public class Agreement {
-    /**
-     * id INT NOT NULL ID_SEQ.NEXTVAL,
-     * 	account_id varchar(40) NOT NULL,
-     * 	product_id INT NOT NULL,
-     * 	status INT(1) NOT NULL,
-     * 	interest_rate decimal(10,5) NULL
-     * 	created_at TIMESTAMP NOT NULL,
-     * 	updated_at TIMESTAMP NOT NULL,
-     */
 
     @Id
     @Column(name = "id")

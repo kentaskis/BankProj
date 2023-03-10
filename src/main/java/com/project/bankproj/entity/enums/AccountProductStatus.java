@@ -5,9 +5,9 @@ public enum AccountProductStatus {
     PENDING(2),
     BLOCKED(3),
     REMOVED(4);
-    private int value;
+    private final int value;
 
-    private AccountProductStatus(int value) {
+    AccountProductStatus(int value) {
         this.value = value;
     }
 
