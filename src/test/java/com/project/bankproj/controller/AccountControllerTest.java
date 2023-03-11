@@ -1,6 +1,7 @@
 package com.project.bankproj.controller;
 
 import com.project.bankproj.dto.AccountDto;
+import com.project.bankproj.entity.enums.AccountStatus;
 import com.project.bankproj.service.interfaces.AccountService;
 import com.project.bankproj.util.DtoCreator;
 import org.junit.jupiter.api.DisplayName;
@@ -65,5 +66,24 @@ class AccountControllerTest {
                 .andExpect(jsonPath("$.status", is(account.getStatus().toString())))
                 .andExpect(jsonPath("$.currency", is(account.getCurrency().toString())))
                 .andExpect(jsonPath("$.balance").value(account.getBalance()));
+    }
+
+    @Test
+    void listAccountsByStatus() throws Exception {
+        final List<AccountDto> accountDtoList = new ArrayList<>();
+        final AccountDto account = DtoCreator.getAccountDto();
+        accountDtoList.add(account);
+        when(accountService.getListByStatus(AccountStatus.ACTIVE.toString())).thenReturn(accountDtoList);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/account/status/"+ AccountStatus.ACTIVE))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].id", is(account.getId())))
+                .andExpect(jsonPath("$[0].name", is(account.getName())))
+                .andExpect(jsonPath("$[0].status", is(account.getStatus().toString())))
+                .andExpect(jsonPath("$[0].currency", is(account.getCurrency().toString())))
+                .andExpect(jsonPath("$[0].balance").value(account.getBalance().toString()))
+        ;
     }
 }
