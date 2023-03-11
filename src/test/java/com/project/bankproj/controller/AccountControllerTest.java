@@ -1,7 +1,7 @@
 package com.project.bankproj.controller;
 
 import com.project.bankproj.dto.AccountDto;
-import com.project.bankproj.service.interfaces.AccountServiceImpl;
+import com.project.bankproj.service.interfaces.AccountService;
 import com.project.bankproj.util.DtoCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DisplayName("Test class for AccountController")
 class AccountControllerTest {
     @MockBean
-    private AccountServiceImpl accountService;
+    private AccountService accountService;
 
     @Autowired
     private MockMvc mockMvc;
