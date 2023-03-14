@@ -2,6 +2,7 @@ package com.project.bankproj.service;
 
 import com.project.bankproj.dto.AccountDto;
 import com.project.bankproj.entity.Account;
+import com.project.bankproj.entity.enums.AccountStatus;
 import com.project.bankproj.mapper.AccountMapper;
 import com.project.bankproj.repository.AccountRepository;
 import com.project.bankproj.util.DtoCreator;
@@ -60,5 +61,18 @@ class AccountServiceImplTest {
 
         assertEquals(actualAccountDto, accountDto);
         verify(repository).findById(account.getId());
+    }
+
+    @Test
+    void getListByStatus() {
+        List<Account> accounts = new ArrayList<>();
+        accounts.add(EntityCreator.getAccount());
+        List<AccountDto> accountDtoList = new ArrayList<>();
+        accountDtoList.add(DtoCreator.getAccountDto());
+        when(repository.findAccountByStatus(AccountStatus.ACTIVE)).thenReturn(accounts);
+        when(mapper.toDtoList(accounts)).thenReturn(accountDtoList);
+
+        assertEquals(accountDtoList, accountService.getListByStatus(AccountStatus.ACTIVE.toString()));
+        verify(repository).findAccountByStatus(AccountStatus.ACTIVE);
     }
 }
