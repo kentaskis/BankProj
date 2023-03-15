@@ -1,10 +1,10 @@
 package com.project.bankproj.entity.enums;
 
 public enum AccountProductStatus {
-    ACTIVE(1),
-    PENDING(2),
-    BLOCKED(3),
-    REMOVED(4);
+    ACTIVE(0),
+    PENDING(1),
+    BLOCKED(2),
+    REMOVED(3);
     private final int value;
 
     AccountProductStatus(int value) {
