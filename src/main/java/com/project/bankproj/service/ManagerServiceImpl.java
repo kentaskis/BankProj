@@ -20,7 +20,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public List<ManagerDto> getWhichContainsClient() {
-        return mapper.toDtoList(repository.findAll());
+        return mapper.toDtoList(repository.findAllWhichContainsClient());
     }
 
     @Override

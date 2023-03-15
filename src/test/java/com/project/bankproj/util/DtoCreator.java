@@ -3,23 +3,28 @@ package com.project.bankproj.util;
 
 import com.project.bankproj.dto.AccountDto;
 import com.project.bankproj.dto.ClientDto;
+import com.project.bankproj.dto.ManagerClientDto;
 import com.project.bankproj.dto.ManagerDto;
 import com.project.bankproj.entity.enums.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DtoCreator {
 
     public static ManagerDto getManagerDto() {
-
+        List<ManagerClientDto> clientDtoList = new ArrayList<>();
+        clientDtoList.add(getManagerClientDto());
         return new ManagerDto(
                 "55555",
                 "TestName",
                 "Lastname",
                 ManagerStatus.ACTIVE,
                 new Timestamp(System.currentTimeMillis()),
-                new Timestamp(System.currentTimeMillis())
+                new Timestamp(System.currentTimeMillis()),
+                clientDtoList
         );
     }
 
@@ -36,6 +41,15 @@ public class DtoCreator {
                 new Timestamp(System.currentTimeMillis()),
                 new Timestamp(System.currentTimeMillis()),
                 getManagerDto()
+        );
+    }
+
+    public static ManagerClientDto getManagerClientDto() {
+        return new ManagerClientDto(
+                "323e77777-e89b-12d3-a456-426655440000",
+                ClientStatus.ACTIVE,
+                "Aleksey",
+                "Lavrov"
         );
     }
 

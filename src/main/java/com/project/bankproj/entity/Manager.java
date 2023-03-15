@@ -10,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -43,6 +44,10 @@ public class Manager {
     @Column(name = "updated_at")
     public Timestamp updatedAt;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id",
+            referencedColumnName = "id")
+    public List<Client> clients;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
