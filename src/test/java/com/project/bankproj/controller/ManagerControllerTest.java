@@ -62,7 +62,7 @@ class ManagerControllerTest {
                 .getResponse();
 
         verify(managerService, times(1)).create(createManagerDto);
-        assertEquals(response.getStatus(), HttpStatus.OK.value());
+        assertEquals(response.getStatus(), HttpStatus.CREATED.value());
     }
 
     @Test
