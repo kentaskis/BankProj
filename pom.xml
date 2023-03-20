@@ -79,7 +79,6 @@
 			<version>${org.mapstruct.version}</version>
 		</dependency>
 
-
 	</dependencies>
 
 	<build>
