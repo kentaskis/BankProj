@@ -17,5 +17,4 @@ public class ClientDto {
     String phone;
     Timestamp createdAt;
     Timestamp updatedAt;
-    ManagerDto manager;
 }

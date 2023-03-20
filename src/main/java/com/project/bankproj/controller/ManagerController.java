@@ -17,7 +17,7 @@ public class ManagerController {
     private final ManagerService managerService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public void createManager(@Valid @RequestBody CreateManagerDto createManagerDto) {
         managerService.create(createManagerDto);
     }
