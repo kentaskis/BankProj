@@ -35,8 +35,7 @@ public class DtoCreator {
                 "Ensteinstrasse 3",
                 "3806668882744",
                 new Timestamp(System.currentTimeMillis()),
-                new Timestamp(System.currentTimeMillis()),
-                getManagerDto()
+                new Timestamp(System.currentTimeMillis())
         );
     }
 
