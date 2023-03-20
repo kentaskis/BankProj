@@ -1,10 +1,7 @@
 package com.project.bankproj.util;
 
 
-import com.project.bankproj.dto.AccountDto;
-import com.project.bankproj.dto.ClientDto;
-import com.project.bankproj.dto.ManagerClientDto;
-import com.project.bankproj.dto.ManagerDto;
+import com.project.bankproj.dto.*;
 import com.project.bankproj.entity.enums.*;
 
 import java.math.BigDecimal;
@@ -13,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DtoCreator {
-
     public static ManagerDto getManagerDto() {
         List<ManagerClientDto> clientDtoList = new ArrayList<>();
         clientDtoList.add(getManagerClientDto());
@@ -66,4 +62,9 @@ public class DtoCreator {
                 getClientDto()
         );
     }
+
+    public static CreateManagerDto getCreateManagerDto() {
+        return new CreateManagerDto("Alexey", "Lavrov");
+    }
+
 }
