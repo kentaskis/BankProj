@@ -1,7 +1,7 @@
 package com.project.bankproj.mapper;
 
+import com.project.bankproj.dto.ClientShortDto;
 import com.project.bankproj.dto.CreateManagerDto;
-import com.project.bankproj.dto.ManagerClientDto;
 import com.project.bankproj.dto.ManagerDto;
 import com.project.bankproj.entity.Client;
 import com.project.bankproj.entity.Manager;
@@ -47,12 +47,12 @@ class ManagerMapperTest {
     void toDtoClientList() {
         List<Client> clientList = new ArrayList<>();
         clientList.add(EntityCreator.getClient());
-        List<ManagerClientDto> managerClientDtos = managerMapper.toDtoClientList(clientList);
+        List<ClientShortDto> clientShortDtos = managerMapper.toDtoClientList(clientList);
 
-        compareClientListWithListDto(clientList, managerClientDtos);
+        compareClientListWithListDto(clientList, clientShortDtos);
     }
 
-    private void compareClientEntityWithDto(Client client, ManagerClientDto dto) {
+    private void compareClientEntityWithDto(Client client, ClientShortDto dto) {
         assertAll(
                 () -> assertEquals(client.getId().toString(), dto.getId()),
                 () -> assertEquals(client.getFirstName(), dto.getFirstName()),
@@ -61,7 +61,7 @@ class ManagerMapperTest {
         );
     }
 
-    private void compareClientListWithListDto(List<Client> clientList, List<ManagerClientDto> clientDtoList) {
+    private void compareClientListWithListDto(List<Client> clientList, List<ClientShortDto> clientDtoList) {
         assertEquals(clientList.size(), clientDtoList.size());
         for (int s = 0; s < clientList.size(); s++) {
             compareClientEntityWithDto(clientList.get(s), clientDtoList.get(s));

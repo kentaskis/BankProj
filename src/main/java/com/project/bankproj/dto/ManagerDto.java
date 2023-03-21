@@ -17,5 +17,5 @@ public class ManagerDto {
     Timestamp createdAt;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Timestamp updatedAt;
-    List<ManagerClientDto> clients;
+    List<ClientShortDto> clients;
 }

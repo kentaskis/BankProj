@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DtoCreator {
     public static ManagerDto getManagerDto() {
-        List<ManagerClientDto> clientDtoList = new ArrayList<>();
+        List<ClientShortDto> clientDtoList = new ArrayList<>();
         clientDtoList.add(getManagerClientDto());
         return new ManagerDto(
                 "55555",
@@ -39,8 +39,8 @@ public class DtoCreator {
         );
     }
 
-    public static ManagerClientDto getManagerClientDto() {
-        return new ManagerClientDto(
+    public static ClientShortDto getManagerClientDto() {
+        return new ClientShortDto(
                 "323e77777-e89b-12d3-a456-426655440000",
                 ClientStatus.ACTIVE,
                 "Aleksey",
