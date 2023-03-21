@@ -8,5 +8,5 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface AgreementMapper {
-    List<AgreementDto> toDto(List<Agreement> agreements);
+    List<AgreementDto> toDtoList(List<Agreement> agreements);
 }

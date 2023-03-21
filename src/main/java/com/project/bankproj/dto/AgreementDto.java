@@ -1,6 +1,7 @@
 package com.project.bankproj.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.project.bankproj.entity.enums.AgreementStatus;
 import lombok.Value;
 
 import java.math.BigDecimal;
@@ -10,7 +11,7 @@ import java.sql.Timestamp;
 public class AgreementDto {
 
     int id;
-    String status;
+    AgreementStatus status;
     BigDecimal interestRate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Timestamp createdAt;

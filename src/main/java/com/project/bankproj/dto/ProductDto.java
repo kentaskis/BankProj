@@ -5,6 +5,7 @@ import com.project.bankproj.entity.enums.CurrencyType;
 import com.project.bankproj.entity.enums.ProductStatus;
 import lombok.Value;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Value
@@ -13,7 +14,7 @@ public class ProductDto {
     String name;
     ProductStatus status;
     CurrencyType currency;
-    String interestRate;
+    BigDecimal interestRate;
     int limit;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Timestamp createdAt;
