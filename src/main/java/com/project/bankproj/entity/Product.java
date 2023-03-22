@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -52,6 +53,9 @@ public class Product {
     @JoinColumn(name = "manager_id",
             referencedColumnName = "id")
     private Manager manager;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<Agreement> agreements;
 
     @Override
     public boolean equals(Object o) {
