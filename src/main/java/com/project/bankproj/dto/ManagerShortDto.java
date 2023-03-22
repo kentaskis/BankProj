@@ -1,12 +1,12 @@
 package com.project.bankproj.dto;
 
-import com.project.bankproj.entity.enums.ClientStatus;
+import com.project.bankproj.entity.enums.ManagerStatus;
 import lombok.Value;
 
 @Value
-public class ManagerClientDto {
+public class ManagerShortDto {
     String id;
-    ClientStatus status;
     String firstName;
     String lastName;
+    ManagerStatus status;
 }

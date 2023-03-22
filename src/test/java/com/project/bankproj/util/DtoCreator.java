@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DtoCreator {
     public static ManagerDto getManagerDto() {
-        List<ManagerClientDto> clientDtoList = new ArrayList<>();
+        List<ClientShortDto> clientDtoList = new ArrayList<>();
         clientDtoList.add(getManagerClientDto());
         return new ManagerDto(
                 "55555",
@@ -21,6 +21,15 @@ public class DtoCreator {
                 new Timestamp(System.currentTimeMillis()),
                 new Timestamp(System.currentTimeMillis()),
                 clientDtoList
+        );
+    }
+
+    public static ManagerShortDto getManagerShortDto() {
+        return new ManagerShortDto(
+                "55555",
+                "TestName",
+                "Lastname",
+                ManagerStatus.ACTIVE
         );
     }
 
@@ -39,8 +48,8 @@ public class DtoCreator {
         );
     }
 
-    public static ManagerClientDto getManagerClientDto() {
-        return new ManagerClientDto(
+    public static ClientShortDto getManagerClientDto() {
+        return new ClientShortDto(
                 "323e77777-e89b-12d3-a456-426655440000",
                 ClientStatus.ACTIVE,
                 "Aleksey",
@@ -66,4 +75,40 @@ public class DtoCreator {
         return new CreateManagerDto("Alexey", "Lavrov");
     }
 
+    public static AgreementDto getAgreementDto() {
+        return new AgreementDto(
+                333,
+                AgreementStatus.ACTIVE,
+                new BigDecimal("3.14"),
+                new Timestamp(System.currentTimeMillis()),
+                new Timestamp(System.currentTimeMillis()),
+                getAccountShortDto(),
+                getProductDto()
+        );
+    }
+
+    public static AccountShortDto getAccountShortDto() {
+        return new AccountShortDto(
+                "77777777-e89b-12d3-a456-426655440000",
+                "Test Name",
+                AccountType.CREDIT,
+                AccountStatus.ACTIVE,
+                new BigDecimal("100000.14"),
+                CurrencyType.EUR
+        );
+    }
+
+    public static ProductDto getProductDto() {
+        return new ProductDto(
+                3333,
+                "Test Name",
+                ProductStatus.ACTIVE,
+                CurrencyType.EUR,
+                new BigDecimal("2.15"),
+                1000000,
+                new Timestamp(System.currentTimeMillis()),
+                new Timestamp(System.currentTimeMillis()),
+                getManagerShortDto()
+        );
+    }
 }
