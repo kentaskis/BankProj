@@ -17,6 +17,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDto> getProductsWhereAgreementsQuantityMoreThan(int agreementQuantity) {
-        return productMapper.toDto(productRepository.findAllProductsWhereAgreementsQuantityMoreThan(agreementQuantity));
+        return productMapper.toDtoList(productRepository.findAllProductsWhereAgreementsQuantityMoreThan(agreementQuantity));
     }
 }
