@@ -31,7 +31,7 @@ class AgreementServiceImplTest {
     AgreementServiceImpl agreementService;
 
     @Test
-    void getWhichContainsClient() {
+    void getAgreementsByManagerId() {
         final int MANAGER_ID = 4;
         List<Agreement> agreements = new ArrayList<>();
         agreements.add(EntityCreator.getAgreement());

@@ -5,6 +5,8 @@ import com.project.bankproj.entity.enums.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class EntityCreator {
@@ -60,6 +62,8 @@ public class EntityCreator {
     }
 
     public static Product getProduct() {
+        List<Agreement> agreementList = new ArrayList<>();
+        agreementList.add(new Agreement());
         return new Product(
                 3333,
                 "Test Name",
@@ -69,7 +73,8 @@ public class EntityCreator {
                 1000000,
                 new Timestamp(System.currentTimeMillis()),
                 new Timestamp(System.currentTimeMillis()),
-                getManager()
+                getManager(),
+                agreementList
         );
     }
 }
