@@ -25,7 +25,8 @@ logging:
     org:
       springframework:
         security: DEBUG
-
+  file:
+    name: bank_app.log
 app:
   server:
     url: ${app.server.url}
