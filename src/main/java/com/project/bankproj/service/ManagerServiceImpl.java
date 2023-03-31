@@ -24,9 +24,9 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public void create(CreateManagerDto createManagerDto) {
+    public ManagerDto create(CreateManagerDto createManagerDto) {
         Manager manager = mapper.toEntity(createManagerDto);
         manager.setStatus(ManagerStatus.PENDING);
-        repository.save(manager);
+        return mapper.toDto(repository.save(manager));
     }
 }

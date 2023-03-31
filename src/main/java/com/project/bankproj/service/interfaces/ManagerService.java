@@ -8,5 +8,5 @@ import java.util.List;
 public interface ManagerService {
     List<ManagerDto> getWhichContainsClient();
 
-    void create(CreateManagerDto createManagerDto);
+    ManagerDto create(CreateManagerDto createManagerDto);
 }
