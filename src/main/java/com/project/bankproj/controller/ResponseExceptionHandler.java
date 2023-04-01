@@ -3,8 +3,8 @@ package com.project.bankproj.controller;
 import com.project.bankproj.dto.ErrorExtension;
 import com.project.bankproj.dto.ErrorResponse;
 import com.project.bankproj.exeption.AccountNotFoundException;
-import com.project.bankproj.exeption.ClientNotFoundException;
 import com.project.bankproj.exeption.ErrorCode;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -18,32 +18,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+
 @RestControllerAdvice
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(AccountNotFoundException.class)
     public ResponseEntity<ErrorExtension> handleAccountNotFoundException(Exception e) {
-
         return new ResponseEntity<>(new ErrorExtension(
                 e.getMessage(),
                 ErrorCode.ACCOUNT_NOT_FOUND
         ), HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(ClientNotFoundException.class)
-    public ResponseEntity<ErrorExtension> handleClientNotFoundException(Exception e) {
-        return new ResponseEntity<>(new ErrorExtension(
-                e.getMessage(),
-                ErrorCode.CLIENT_NOT_FOUND
-        ), HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorExtension> handleIllegalArgumentException(Exception e) {
-        return new ResponseEntity<>(new ErrorExtension(
-                e.getMessage(),
-                ErrorCode.VALIDATION_FAILED
-        ), HttpStatus.BAD_REQUEST);
     }
 
     @Override
@@ -60,5 +45,14 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 .collect(Collectors.toList());
         return new ResponseEntity<>(
                 new ErrorResponse(ErrorCode.VALIDATION_FAILED, errorExtensions), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorResponse> handleConstraintViolationException(ConstraintViolationException exception) {
+        List<ErrorExtension> extensions = exception.getConstraintViolations()
+                .stream()
+                .map(violation -> new ErrorExtension(violation.getMessage(), ErrorCode.INVALID_PATH_VARIABLE))
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(new ErrorResponse(ErrorCode.INVALID_PATH_VARIABLE, extensions), BAD_REQUEST);
     }
 }

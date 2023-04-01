@@ -12,10 +12,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("manager")
@@ -38,8 +40,8 @@ public class ManagerController {
         return managerService.create(createManagerDto);
     }
 
-    @GetMapping("/contains-client")
     @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/contains-client")
     @Operation(
             summary = "Query for all managers which contains client",
             description = "Getting  all managers which contains client"
@@ -54,5 +56,15 @@ public class ManagerController {
             })
     public List<ManagerDto> getWhichContainsClient() {
         return managerService.getWhichContainsClient();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/{managerId}")
+    @Operation(
+            summary = "Delete manager by id",
+            description = "Deleting manager by id"
+    )
+    public void deleteManager(@Valid @PathVariable int managerId) {
+        managerService.delete(managerId);
     }
 }

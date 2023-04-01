@@ -50,7 +50,8 @@ class ManagerControllerTest {
     @Test
     void createManager() throws Exception {
         CreateManagerDto createManagerDto = new CreateManagerDto("Aleksey", "Lavrov");
-        doNothing().when(managerService).create(createManagerDto);
+        when(managerService.create(createManagerDto)).thenReturn(DtoCreator.getManagerDto());
+
         MockHttpServletResponse response = mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/manager")
@@ -81,5 +82,21 @@ class ManagerControllerTest {
                 .andExpect(jsonPath("$[0].lastName", is(managerDto.getLastName())))
                 .andExpect(jsonPath("$[0].status", is(managerDto.getStatus().toString())))
         ;
+    }
+
+    @Test
+    void deleteManager() throws Exception {
+        int managerId = 1;
+        doNothing().when(managerService).delete(managerId);
+
+        MockHttpServletResponse response = mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .delete("/manager/" + managerId))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse();
+
+        verify(managerService, times(1)).delete(managerId);
+        assertEquals(response.getStatus(), HttpStatus.OK.value());
     }
 }

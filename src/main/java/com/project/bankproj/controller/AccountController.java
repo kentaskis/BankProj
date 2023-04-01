@@ -9,13 +9,16 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.UUID;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("account")
 @RequiredArgsConstructor
@@ -50,7 +53,7 @@ public class AccountController {
                             mediaType = "application/json",
                             schema = @Schema(implementation = AccountDto.class))
             })
-    public AccountDto get(@PathVariable @UUID @Parameter(required = true, description = "Account UUID") String uuid) {
+    public AccountDto get(@PathVariable @Valid @UUID @Parameter(required = true, description = "Account UUID") String uuid) {
         return service.getById(uuid);
     }
 
