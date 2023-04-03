@@ -4,16 +4,17 @@ import com.project.bankproj.dto.JwtRequest;
 import com.project.bankproj.dto.JwtResponse;
 import com.project.bankproj.dto.RefreshJwtRequest;
 import com.project.bankproj.service.interfaces.AuthService;
-import com.project.bankproj.service.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("auth")
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
-    private final UserService userService;
 
     @PostMapping("login")
     public JwtResponse authorisation(@RequestBody JwtRequest jwtRequest) {
@@ -28,10 +29,5 @@ public class AuthController {
     @PostMapping("refresh")
     public JwtResponse refreshJwtTokens(@RequestBody RefreshJwtRequest refreshJwtRequest) {
         return authService.refresh(refreshJwtRequest.getRefreshToken());
-    }
-
-    @GetMapping("/new")
-    public void newUser(){
-        userService.create();
     }
 }
