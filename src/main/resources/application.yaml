@@ -28,9 +28,15 @@ logging:
 
 jwt:
   secret:
-    access: OjGsqcDSjU3qmXt6kZVzNtS4UylQGG/NC1MJK42FqnpWfhgwe/R7nIPXr0UIxipW3+lWDRLQELLvzTOaOK8QKw==
-    refresh: lMgIw38fXVVZnQapAqp6Oi3F9W55akHY2mZKpp4ZmajvAjnrg61zUX+m5HsNgqEvhv0WDuW2SRYkWR16Z0Ho2w==
+    access: ${jwt.secret.access}
+    refresh: ${jwt.secret.refresh}
 
 app:
   server:
     url: ${app.server.url}
+
+redis:
+  username: ${redis.username}
+  password: ${redis.password}
+  host: ${redis.host}
+  port: ${redis.port}

@@ -7,6 +7,7 @@ import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +24,7 @@ public class JwtProvider {
     private final SecretKey jwtAccessSecret;
     private final SecretKey jwtRefreshSecret;
 
-
+    @Autowired
     public JwtProvider(
             @Value("${jwt.secret.access}") String jwtAccessSecret,
             @Value("${jwt.secret.refresh}") String jwtRefreshSecret

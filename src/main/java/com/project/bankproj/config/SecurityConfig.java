@@ -30,16 +30,13 @@ public class SecurityConfig {
                                     .requestMatchers(
                                             "/auth/login",
                                             "/auth/new-token",
-                                            "/auth/refresh",
-                                            "/auth/new"
+                                            "/auth/refresh"
                                     ).permitAll()
                                     .anyRequest().authenticated()
                                     .and()
                                     .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-
                     )
                     .build();
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
