@@ -143,6 +143,26 @@
 			<artifactId>jedis</artifactId>
 			<version>4.3.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-test -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<version>6.0.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-jose -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+			<version>6.0.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-resource-server</artifactId>
+			<version>6.0.1</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
