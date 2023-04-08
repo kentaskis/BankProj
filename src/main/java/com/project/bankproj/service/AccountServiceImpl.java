@@ -3,6 +3,7 @@ package com.project.bankproj.service;
 import com.project.bankproj.dto.AccountDto;
 import com.project.bankproj.entity.enums.AccountStatus;
 import com.project.bankproj.exeption.AccountNotFoundException;
+import com.project.bankproj.exeption.ErrorMessage;
 import com.project.bankproj.mapper.AccountMapper;
 import com.project.bankproj.repository.AccountRepository;
 import com.project.bankproj.service.interfaces.AccountService;
@@ -34,6 +35,6 @@ public class AccountServiceImpl implements AccountService {
                 repository
                         .findById(
                                 UUID.fromString(uuid))
-                        .orElseThrow(() -> new AccountNotFoundException("Account id is not found")));
+                        .orElseThrow(() -> new AccountNotFoundException(ErrorMessage.M_ACCOUNT_NOT_FOUND)));
     }
 }

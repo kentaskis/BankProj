@@ -9,4 +9,6 @@ public interface ManagerService {
     List<ManagerDto> getWhichContainsClient();
 
     ManagerDto create(CreateManagerDto createManagerDto);
+
+    void delete(int managerId);
 }

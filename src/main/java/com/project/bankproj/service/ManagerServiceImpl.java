@@ -29,4 +29,9 @@ public class ManagerServiceImpl implements ManagerService {
         manager.setStatus(ManagerStatus.PENDING);
         return mapper.toDto(repository.save(manager));
     }
+
+    @Override
+    public void delete(int managerId) {
+        repository.deleteById(managerId);
+    }
 }
