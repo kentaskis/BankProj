@@ -26,6 +26,11 @@ logging:
       springframework:
         security: DEBUG
 
+jwt:
+  secret:
+    access: OjGsqcDSjU3qmXt6kZVzNtS4UylQGG/NC1MJK42FqnpWfhgwe/R7nIPXr0UIxipW3+lWDRLQELLvzTOaOK8QKw==
+    refresh: lMgIw38fXVVZnQapAqp6Oi3F9W55akHY2mZKpp4ZmajvAjnrg61zUX+m5HsNgqEvhv0WDuW2SRYkWR16Z0Ho2w==
+
 app:
   server:
     url: ${app.server.url}
