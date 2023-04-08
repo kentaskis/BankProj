@@ -73,6 +73,7 @@ class ManagerControllerTest {
                                 .content(
                                         jsonCreateManagerDto.write(createManagerDto).getJson()
                                 ))
+                .andDo(print())
                 .andReturn()
                 .getResponse();
 

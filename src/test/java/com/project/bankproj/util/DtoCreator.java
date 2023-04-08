@@ -111,4 +111,24 @@ public class DtoCreator {
                 getManagerShortDto()
         );
     }
+
+    public static JwtRequest getJwtRequest() {
+        return new JwtRequest(
+                "testLogin",
+                "testPassword"
+        );
+    }
+
+    public static JwtResponse getJwtResponse() {
+        return new JwtResponse(
+                "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MDYzMTA1Miwicm9sZXMiOlsiQURNSU4iXSwiZmlyc3ROYW1lIjoiYWRtaW4ifQ.5ZmZlVXaefELt4wa-1oOgguBJ33S2MVHOHruDPs5QEkrVbnrmn99F_v01jY7fzkekH-FG-O6vEcokCGRB-MBzA",
+                "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MzIyMjQ1MX0.WPGYpABeheuSTqZ4AlCW_-Fj3jPClDqWn6jtJbYEWydaHof8Fcl1HZCAob60s1Pq8LPXHQFPwNRFBD56eaCcJA"
+        );
+    }
+
+    public static RefreshJwtRequest geRefreshJwtRequest() {
+        return new RefreshJwtRequest(
+                "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MzIyMjQ1MX0.WPGYpABeheuSTqZ4AlCW_-Fj3jPClDqWn6jtJbYEWydaHof8Fcl1HZCAob60s1Pq8LPXHQFPwNRFBD56eaCcJA"
+        );
+    }
 }
