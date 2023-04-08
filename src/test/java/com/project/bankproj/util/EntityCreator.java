@@ -6,6 +6,7 @@ import com.project.bankproj.entity.enums.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -75,6 +76,19 @@ public class EntityCreator {
                 new Timestamp(System.currentTimeMillis()),
                 getManager(),
                 agreementList
+        );
+    }
+
+    public static User getUser() {
+        HashSet<Role> roles = new HashSet<>();
+        roles.add(Role.ADMIN);
+        return new User(
+                UUID.fromString("7777778-e89b-12d3-a456-426654400"),
+                "testLogin",
+                "testPassword",
+                roles,
+                getManager(),
+                getClient()
         );
     }
 }

@@ -9,8 +9,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -20,11 +20,15 @@ import java.io.IOException;
 
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public class JwtFilter extends GenericFilterBean {
     private static final String AUTHORIZATION_HEADER = "Authorization";
 
     private final JwtProvider jwtProvider;
+
+    @Autowired
+    public JwtFilter(JwtProvider jwtProvider) {
+        this.jwtProvider = jwtProvider;
+    }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

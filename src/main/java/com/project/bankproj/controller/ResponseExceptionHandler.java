@@ -3,7 +3,10 @@ package com.project.bankproj.controller;
 import com.project.bankproj.dto.ErrorExtension;
 import com.project.bankproj.dto.ErrorResponse;
 import com.project.bankproj.exeption.AccountNotFoundException;
+import com.project.bankproj.exeption.AuthException;
 import com.project.bankproj.exeption.ErrorCode;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -55,4 +58,29 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 .collect(Collectors.toList());
         return new ResponseEntity<>(new ErrorResponse(ErrorCode.INVALID_PATH_VARIABLE, extensions), BAD_REQUEST);
     }
+
+    @ExceptionHandler(AuthException.class)
+    public ResponseEntity<ErrorExtension> handleAuthException(Exception e) {
+        return new ResponseEntity<>(new ErrorExtension(
+                e.getMessage(),
+                ErrorCode.ACCOUNT_NOT_FOUND
+        ), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<ErrorExtension> handleExpiredJwtException(Exception e) {
+        return new ResponseEntity<>(new ErrorExtension(
+                e.getMessage(),
+                ErrorCode.JWT_EXPIRED
+        ), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(MalformedJwtException.class)
+    public ResponseEntity<ErrorExtension> handleMalformedJwtException(Exception e) {
+        return new ResponseEntity<>(new ErrorExtension(
+                e.getMessage(),
+                ErrorCode.JWT_NOT_VALID
+        ), HttpStatus.UNAUTHORIZED);
+    }
+
 }
