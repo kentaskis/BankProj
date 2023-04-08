@@ -1,5 +1,6 @@
 package com.project.bankproj.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.project.bankproj.entity.enums.ClientStatus;
 import lombok.Value;
 
@@ -15,7 +16,8 @@ public class ClientDto {
     String email;
     String address;
     String phone;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Timestamp createdAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Timestamp updatedAt;
-    ManagerDto manager;
 }

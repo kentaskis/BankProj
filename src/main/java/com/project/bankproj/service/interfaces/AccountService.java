@@ -4,8 +4,8 @@ import com.project.bankproj.dto.AccountDto;
 
 import java.util.List;
 
-public interface AccountServiceImpl {
+public interface AccountService {
     List<AccountDto> getList();
-
+    List<AccountDto> getListByStatus(String status);
     AccountDto getById(String uuid);
 }

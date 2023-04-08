@@ -1,6 +1,6 @@
 package com.project.bankproj.entity;
 
-import com.project.bankproj.entity.enums.AccountProductStatus;
+import com.project.bankproj.entity.enums.AgreementStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +26,7 @@ public class Agreement {
 
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)
-    private AccountProductStatus status;
+    private AgreementStatus status;
 
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
