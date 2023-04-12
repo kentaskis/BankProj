@@ -14,13 +14,13 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class JwtProviderTest {
+class JwtProviderTest {
 
     private JwtProvider jwtProvider;
     private final Set<Role> roles = new HashSet<>();
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         jwtProvider = new JwtProvider(
                 "BuTyO1qByhgCP/CbIjModrxRHbg//w+KxVtGC83RNmw3kE0G6ozSR5JLglrIDoswD8PIzU72oX9A4uyJc+V5jA==",
                 "qAlz8yAEnxvkQBIu3IbbP9S7Bndl3Urlan0ydPrb1rBUnmySi80+KCoYYsfd/THUFZLWH8yBlJ/kQrbkmB3+4w=="
@@ -29,7 +29,7 @@ public class JwtProviderTest {
     }
 
     @Test
-    public void generateAccessToken() {
+    void generateAccessToken() {
         User user = new User();
         user.setLogin("testuser");
         user.setRoles(roles);
@@ -38,7 +38,7 @@ public class JwtProviderTest {
     }
 
     @Test
-    public void generateRefreshToken() {
+    void generateRefreshToken() {
         User user = new User();
         user.setLogin("testuser");
         user.setRoles(roles);
@@ -47,7 +47,7 @@ public class JwtProviderTest {
     }
 
     @Test
-    public void validateToken() {
+    void validateToken() {
         User user = new User();
         user.setLogin("testuser");
         user.setRoles(roles);
@@ -56,7 +56,7 @@ public class JwtProviderTest {
     }
 
     @Test
-    public void validateTokenWithExpiredToken() {
+    void validateTokenWithExpiredToken() {
         User user = new User();
         user.setLogin("testuser");
         user.setRoles(roles);
@@ -77,7 +77,7 @@ public class JwtProviderTest {
     }
 
     @Test
-    public void validateAccessToken() {
+    void validateAccessToken() {
         User user = new User();
         user.setLogin("testuser");
         user.setRoles(roles);
@@ -86,7 +86,7 @@ public class JwtProviderTest {
     }
 
     @Test
-    public void validateRefreshToken() {
+    void validateRefreshToken() {
         User user = new User();
         user.setLogin("testuser");
         user.setRoles(roles);
@@ -95,7 +95,7 @@ public class JwtProviderTest {
     }
 
     @Test
-    public void getAccessClaims() {
+    void getAccessClaims() {
         User user = new User();
         user.setLogin("testuser");
         user.setRoles(roles);

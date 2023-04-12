@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class AuthServiceImplTest {
+class AuthServiceImplTest {
 
     @Mock
     private UserService userService;
@@ -57,7 +57,7 @@ public class AuthServiceImplTest {
     }
 
     @Test
-    public void login_withInvalidCredentials_throwsAuthException() {
+    void login_withInvalidCredentials_throwsAuthException() {
         JwtRequest jwtRequest = DtoCreator.getJwtRequest();
 
         when(userService.getByLogin(jwtRequest.getLogin())).thenReturn(Optional.empty());
@@ -86,7 +86,7 @@ public class AuthServiceImplTest {
 
 
     @Test
-    public void getAccessToken_withInvalidRefreshToken_returnsJwtResponseWithNullValues() {
+    void getAccessToken_withInvalidRefreshToken_returnsJwtResponseWithNullValues() {
         String refreshToken = "invalid_refresh_token";
 
         when(jwtProvider.validateRefreshToken(refreshToken)).thenReturn(false);

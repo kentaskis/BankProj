@@ -17,6 +17,9 @@
 		<java.version>17</java.version>
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
 		<lombok.version>1.18.26</lombok.version>
+		<sonar.projectKey>bank-key</sonar.projectKey>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		<sonar.token>sqp_6571d60e12549b4ae148340d074c2d4b1ea287bb</sonar.token>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -247,6 +250,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.8.0.2131</version>
 			</plugin>
 		</plugins>
 	</build>
