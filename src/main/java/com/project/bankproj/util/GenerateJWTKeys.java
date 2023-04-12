@@ -3,12 +3,14 @@ package com.project.bankproj.util;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class GenerateJWTKeys {
 
     public static void main(String[] args) {
-        System.out.println(generateJWTKey());
-        System.out.println(generateJWTKey());
+        log.info(generateJWTKey());
+        log.info(generateJWTKey());
     }
 
     private static String generateJWTKey() {

@@ -1,5 +1,6 @@
 package com.project.bankproj.config;
 
+import com.project.bankproj.exeption.UnauthorizedException;
 import com.project.bankproj.validation.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +26,7 @@ public class SecurityConfig {
                     .csrf().disable()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
-                    .authorizeHttpRequests((authorizeHttpRequests) ->
+                    .authorizeHttpRequests(authorizeHttpRequests ->
                             authorizeHttpRequests
                                     .requestMatchers(
                                             "/auth/login",
@@ -38,7 +39,7 @@ public class SecurityConfig {
                     )
                     .build();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new UnauthorizedException(e.getMessage());
         }
     }
 }

@@ -9,7 +9,7 @@ import java.util.Objects;
 @Getter
 @AllArgsConstructor
 public class JwtResponse {
-    private final String type = "Bearer";
+    private static final String AUTH_TYPE = "Bearer";
     private String accessToken;
     private String refreshToken;
     @Override
@@ -21,6 +21,6 @@ public class JwtResponse {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(accessToken,refreshToken, type);
+        return Objects.hash(accessToken,refreshToken, AUTH_TYPE);
     }
 }
