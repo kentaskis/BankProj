@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.project</groupId>
 	<artifactId>BankProj</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>BankProj</name>
 	<description>BankProj</description>
 	<properties>
@@ -168,6 +168,7 @@
 
 	</dependencies>
 	<build>
+		<finalName>BankProj</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.liquibase</groupId>

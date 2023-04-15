@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  # MySQL 8 service
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: $${DATASOURCE.DBNAME}
+      MYSQL_USER: $${DATASOURCE.USERNAME}
+      MYSQL_PASSWORD: $${DATASOURCE.PASSWORD}
+      MYSQL_ROOT_PASSWORD: $${DATASOURCE.PASSWORD.ROOT}
+      TZ: Europe/Berlin
+    volumes:
+        - ./.docker/data/mysql:/var/lib/mysql
+        - ./.docker/context/conf/mysql/:/docker-entrypoint-initdb.d
+    ports:
+      - "3307:3306"
+
+  # Redis service
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  # SonarQube service
+  sonarqube:
+    image: sonarqube:8.9.4-community
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./.docker/context/conf/sonarqube:/opt/sonarqube/conf
+      - ./.docker/data/sonarqube/sonarqube_data:/opt/sonarqube/data
+      - ./.docker/data/sonarqube/sonarqube_extensions:/opt/sonarqube/extensions
+      - ./.docker/data/sonarqube/sonarqube_logs:/opt/sonarqube/logs
+      - ./src:/usr/src/app
+  # Spring Boot application service
+  app:
+    build:
+      context: .
+      dockerfile: .docker/context/images/app/Dockerfile
+      args:
+        JAR_FILE: target/BankProj.jar
+    ports:
+      - "8000:8080"
+    env_file:
+      - .env
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/$${DATASOURCE.DBNAME}?allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: $${DATASOURCE.USERNAME}
+      SPRING_DATASOURCE_PASSWORD: $${DATASOURCE.PASSWORD}
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+      SONAR_HOST_URL: http://sonarqube:9000
+    depends_on:
+      - mysql
+      - redis
+      - sonarqube
+
+volumes:
+  mysql-data:
