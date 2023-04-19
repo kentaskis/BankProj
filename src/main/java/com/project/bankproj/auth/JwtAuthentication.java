@@ -34,7 +34,7 @@ public class JwtAuthentication implements Authentication {
 
     @Override
     public Object getPrincipal() {
-        return login;
+        return getName();
     }
 
     @Override

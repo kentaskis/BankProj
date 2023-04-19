@@ -3,9 +3,10 @@ spring:
     banner-mode: off
 
   datasource:
-    url: ${datasource.url}
-    username: ${datasource.username}
-    password: ${datasource.password}
+    url: jdbc:mysql://${DATASOURCE.HOST}:${DATASOURCE.PORT}/${DATASOURCE.DBNAME}?useSSL=false&serverTimezone=UTC
+    username: ${DATASOURCE.USERNAME}
+    password: ${DATASOURCE.PASSWORD}
+
 
   jpa:
     properties:
@@ -17,7 +18,7 @@ spring:
       ddl-auto: validate
 
   liquibase:
-    change-log: classpath:/db/changelog/changelog-master.xml
+    change-log: classpath:db/changeLog/changelog-master.xml
 
 logging:
   level:
@@ -28,15 +29,11 @@ logging:
 
 jwt:
   secret:
-    access: ${jwt.secret.access}
-    refresh: ${jwt.secret.refresh}
-
-app:
-  server:
-    url: ${app.server.url}
+    access: ${JWT.SECRET.ACCESS}
+    refresh: ${JWT.SECRET.REFRESH}
 
 redis:
-  username: ${redis.username}
-  password: ${redis.password}
-  host: ${redis.host}
-  port: ${redis.port}
+  username: ${REDIS.USERNAME}
+  password: ${REDIS.PASSWORD}
+  host: ${REDIS.HOST}
+  port: ${REDIS.PORT}
