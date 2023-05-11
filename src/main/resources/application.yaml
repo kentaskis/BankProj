@@ -3,7 +3,7 @@ spring:
     banner-mode: off
 
   datasource:
-    url: jdbc:mysql://${DATASOURCE.HOST}:${DATASOURCE.PORT}/${DATASOURCE.DBNAME}?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://${DATASOURCE.HOST}:${DATASOURCE.PORT}/${DATASOURCE.DBNAME}?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
     username: ${DATASOURCE.USERNAME}
     password: ${DATASOURCE.PASSWORD}
 

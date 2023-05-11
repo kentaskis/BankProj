@@ -31,8 +31,12 @@ public class SecurityConfig {
                                     .requestMatchers(
                                             "/auth/login",
                                             "/auth/new-token",
-                                            "/auth/refresh"
-                                    ).permitAll()
+                                            "/auth/refresh",
+                                            "/swagger-ui.html",
+                                            "/swagger-ui/**",
+                                            "/v3/api-docs/**"
+                                    )
+                                    .permitAll()
                                     .anyRequest().authenticated()
                                     .and()
                                     .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
